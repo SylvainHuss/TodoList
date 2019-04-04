@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="ListeaFaire">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Liste de choses à faire</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div ng-controller="indexController">
+            <input type="text" ng-model="formData.username">
+            <input type="password" ng-model="formData.password">
+            <input type="button" ng-click="changerPage()" value="Log in">
+            <input type="button" ng-click="creerCompte()" value="Sign in">
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="ListeaFaire">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Liste de choses à faire</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div ng-controller="mainController">
+                <input type="button" ng-click="changerPage()" value="Log out">
+            <h1>Todo List : </h1>
+            <p>Bonjour, {{username}}</p>
+            <p> Nombre des choses à faire : {{ laliste.length }}</p>
+            <div id="todo-list">
+                <div ng-repeat="y in categories">
+                    <h5>
+                        <button class="btn btn-link" ng-click="deleteCategory(y._id)" style="text-decoration: none;"> &times; </button>
+                         {{y.text}}
+
+                         <div ng-repeat="x in laliste" style="text-indent: 50px;" ng-show='x.category==y.text'>
+                            <h5><button class="btn btn-link" ng-click="deleteTodo(x._id)" style="text-decoration: none;"> &times; </button>
+                                 {{x.date}} -
+                                 <span ng-bind="x.text" onmouseover="" style="cursor: pointer;" ng-click="check(x._id)"
+                                 ng-style="(x.done && {'text-decoration': 'line-through'}) || (!x.done && {'text-decoration': 'none'})">
+                                 </span>
+                                 <input type="text" ng-model="newtext">
+                                 <input type="button" value="Modifier" ng-show="newtext" ng-click="changename(x._id, newtext)">
+                                </h5>
+                        </div>
+
+                        <div id="todo-form" style="text-indent: 65px;">
+                            <form>
+                                <input type="text" placeholder="Add a task in {{y.text}}" ng-model="newtask">
+                                <button type="submit" class="btn btn-primary" ng-click="createTodo(y.text, newtask); newtask = ''">Ajouter</button>
+                            </form>
+                        </div>
+
+                    </h5>
+                </div>
+            </div>
+
+            <div id="todo-form">
+                <form>
+                    <input type="text" placeholder="Add a category" ng-model="newcategory">
+                    <button type="submit" class="btn btn-primary" ng-click="createCategory(newcategory)">Ajouter</button>
+                </form>
+            </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

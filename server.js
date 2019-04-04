@@ -1,5 +1,4 @@
 /** Appel des dépendances et des packages externes */
-var mongoose = require('mongoose');
 var Liste = require('./model').Liste;
 var Categorie = require('./model').Categorie;
 var dataLayer = require('./dataLayer');
@@ -18,6 +17,16 @@ app.use(morgan('dev')); //color output for development usage
 app.use(bodyParser.urlencoded({'extended':'true'})); 
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type : 'application/vnd.api+json' })); //type de l'application
+
+function ignoreFavicon(req, res, next) {
+    if (req.originalUrl === '/favicon.ico') {
+      res.status(204).json({nope: true});
+    } else {
+      next();
+    }
+  }
+
+  app.use(ignoreFavicon);
 
 dataLayer.init(function(){
     console.log("init");

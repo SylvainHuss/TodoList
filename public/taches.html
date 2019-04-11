@@ -17,7 +17,8 @@
             </div>
             <div id="todo-list">
                 <div ng-repeat="y in categories">
-                    <h5><div  class="border-top" style="padding-left: 100px;">
+                    <div  style="padding-left: 100px;"  class="border-top">
+                    <h5><div>
                         <button class="btn btn-link" ng-click="deleteCategory(y._id)" style="text-decoration: none;"> &times; </button>
                          {{y.text}}
                         </div>
@@ -40,6 +41,7 @@
                         </div>
 
                     </h5>
+                    </div>
                 </div>
             </div>
 

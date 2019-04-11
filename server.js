@@ -34,7 +34,7 @@ function ignoreFavicon(req, res, next) {
 
 dataLayer.init(function(){
     console.log("init");
-    app.listen(8888);
+    app.listen(process.env.PORT || 8888);
     console.log("on utilise le port 8888");
 });
 

@@ -8,17 +8,19 @@
 
     </head>
     <body>
-        <div ng-controller="mainController">
-                <input type="button" ng-click="changerPage()" value="Log out">
+        <div ng-controller="mainController" >
+            <div style="padding-bottom: 50px; padding-top: 50px; padding-left: 100px;">
+                <input class="btn btn-primary" type="button" ng-click="changerPage()" value="Log out">
             <h1>Todo List : </h1>
-            <p>Bonjour, {{username}}</p>
-            <p> Nombre des choses à faire : {{ laliste.length }}</p>
+            <p>Hi, {{username}} !</p>
+            <p> Number of tasks : {{ laliste.length }}</p>
+            </div>
             <div id="todo-list">
                 <div ng-repeat="y in categories">
-                    <h5>
+                    <h5><div  class="border-top" style="padding-left: 100px;">
                         <button class="btn btn-link" ng-click="deleteCategory(y._id)" style="text-decoration: none;"> &times; </button>
                          {{y.text}}
-
+                        </div>
                          <div ng-repeat="x in laliste" style="text-indent: 50px;" ng-show='x.category==y.text'>
                             <h5><button class="btn btn-link" ng-click="deleteTodo(x._id)" style="text-decoration: none;"> &times; </button>
                                  {{x.date}} -
@@ -26,14 +28,14 @@
                                  ng-style="(x.done && {'text-decoration': 'line-through'}) || (!x.done && {'text-decoration': 'none'})">
                                  </span>
                                  <input type="text" ng-model="newtext">
-                                 <input type="button" value="Modifier" ng-show="newtext" ng-click="changename(x._id, newtext)">
+                                 <input type="button" class="btn btn-primary" value="Rename" ng-show="newtext" ng-click="changename(x._id, newtext)">
                                 </h5>
                         </div>
 
                         <div id="todo-form" style="text-indent: 65px;">
                             <form>
                                 <input type="text" placeholder="Add a task in {{y.text}}" ng-model="newtask">
-                                <button type="submit" class="btn btn-primary" ng-click="createTodo(y.text, newtask); newtask = ''">Ajouter</button>
+                                <button type="submit" class="btn btn-primary" ng-click="createTodo(y.text, newtask); newtask = ''">Add</button>
                             </form>
                         </div>
 
@@ -41,8 +43,9 @@
                 </div>
             </div>
 
-            <div id="todo-form">
+            <div id="todo-form" class="border-top" style="padding-left:50px; padding-bottom:50px; padding-top:40px;">
                 <form>
+                    <br>
                     <input type="text" placeholder="Add a category" ng-model="newcategory">
                     <button type="submit" class="btn btn-primary" ng-click="createCategory(newcategory)">Ajouter</button>
                 </form>
